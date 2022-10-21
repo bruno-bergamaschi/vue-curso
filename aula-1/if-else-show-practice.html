@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <div v-if="user.id === 1">
+        <p>ID: {{user.id}}</p>
+        <p>NAME: {{user.name}}</p>
+        <p>PROFISSÃO: {{user.profession}}</p>
+      </div>
+      <div v-else>
+        <p>Nenhum usuário com ID 1</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "Aula 01 - V-IF | V-ELSE | V-SHOW",
+          user: {
+            id: 1,
+            name: "Bruno Bergamaschi",
+            profession: "Desenvolvedor",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

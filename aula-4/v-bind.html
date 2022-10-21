@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style media="screen">
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <!-- v-bind -->
+      <!-- Atribui o valor de variáveis as tags HTML -->
+
+      <!-- src e alt com v-bind lendo os valores de variáveis -->
+      <div>
+        <img v-bind:src="image" v-bind:alt="alt" />
+      </div>
+
+      <!-- src e alt sem v-bind, não recebem o valor da variável,
+      logo será cosiderada a string -->
+      <div>
+        <img src="image" alt="alt" />
+      </div>
+
+      <!-- src sem v-bind, quebrando a imagem e alt com v-bind recebendo o valor -->
+      <div>
+        <img src="image" v-bind:alt="alt" />
+      </div>
+
+      <!-- v-bind também pode receber texto direto, basta utilizar '' para utilizar o
+      texto dentro de "" ou o contrário "" dentro de '' -->
+      <div>
+        <img src="image" v-bind:alt="'Um cara muito sexy!'" />
+      </div>
+
+      <!-- v-bind pode ser abreviado para : -->
+      <div>
+        <img :src="image" :alt="alt" />
+      </div>
+
+      <p :class="classParagraph">Um texto vermelho!</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "Aula 04 - V-BIND",
+          image: "https://c.tenor.com/F_ukg-WftYEAAAAM/thomezord-coelhucas.gif",
+          alt: "Um cara muito sexy!",
+          classParagraph: "green",
+        },
+      });
+    </script>
+  </body>
+</html>

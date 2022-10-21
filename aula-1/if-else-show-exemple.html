@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-if -->
+      <!-- Não exibe e não cria no código HTML -->
+      <h1 v-if="showTitle">{{titulo}}</h1>
+      <h1 v-else>Não existe título!</h1>
+
+      <!-- v-show -->
+      <!-- Não exibe o parágrafo, porém será criado o código em HTML 
+           com display none, mas pode ser manipulada e exibida se
+           alterado no inspecionar -->
+      <p v-show="showParagraph">
+        Tempor sint in ad laborum adipisicing aute sint ad aliquip excepteur.
+        Lorem sint enim elit nulla voluptate quis consectetur eiusmod. Amet
+        nulla deserunt mollit do occaecat quis occaecat. Cupidatat eiusmod velit
+        labore pariatur nulla sit voluptate nisi voluptate ea incididunt mollit.
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          titulo: "Aula 01 - Vue.Js do jeito ninja!",
+          showTitle: false,
+          showParagraph: true,
+        },
+      });
+    </script>
+  </body>
+</html>

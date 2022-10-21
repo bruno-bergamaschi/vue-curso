@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <div>
+        <label>Nome</label>
+        <div>
+          <input type="text" v-model="user.name" />
+        </div>
+      </div>
+      <label>Email</label>
+      <div>
+        <input type="text" v-model="user.email" />
+      </div>
+      <label>Sexo</label>
+      <div>
+        <input type="radio" v-model="user.sex" value="Masculino" /> Masculino
+        <input type="radio" v-model="user.sex" value="Feminino" /> Feminino
+      </div>
+      <label>Interesses</label>
+      <div>
+        <input type="checkbox" v-model="user.interests" value="Futebol" />
+        Futebol
+        <input type="checkbox" v-model="user.interests" value="Basquete" />
+        Basquete
+        <input type="checkbox" v-model="user.interests" value="Volei" /> Volei
+      </div>
+
+      <hr />
+
+      <p>Nome: {{user.name}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Sexo: {{user.sex}}</p>
+      <div style="display: flex; gap: 10px">
+        <div>Interesses:</div>
+        <div v-for="item in user.interests">{{item}}</div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "Aula 03 - V-MODEL",
+          user: {
+            name: "",
+            email: "",
+            sex: "",
+            interests: [],
+          },
+          showDataUser: false,
+        },
+      });
+    </script>
+  </body>
+</html>

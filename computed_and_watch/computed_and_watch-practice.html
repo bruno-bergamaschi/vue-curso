@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <p>Watch: {{fullName}}</p>
+      <p>Computed: {{fullNameComputed}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "COMPUTED | WATCH  ",
+          firstName: "",
+          lastName: "",
+          fullName: "",
+        },
+        computed: {
+          fullNameComputed() {
+            console.log("impressão computed");
+            return `${this.firstName} ${this.lastName}`;
+          },
+        },
+        watch: {
+          firstName(newValue) {
+            console.log("impressão watch 1");
+            this.fullName = `${newValue} ${this.lastName}`;
+          },
+          lastName(newValue) {
+            console.log("impressão watch 2");
+            this.fullName = `${this.firstName} ${newValue}`;
+          },
+        },
+
+        // app.firstName = 'Bruno'
+        // computed_and_watch-practice.html:35 impressão watch 1
+        // computed_and_watch-practice.html:29 impressão computed
+        // 'Bruno'
+        // app.lastName = 'Bergamaschi'
+        // computed_and_watch-practice.html:39 impressão watch 2
+        // computed_and_watch-practice.html:29 impressão computed
+        // 'Bergamaschi'
+      });
+    </script>
+  </body>
+</html>

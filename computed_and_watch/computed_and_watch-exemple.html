@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <p>{{name}}</p>
+      <p>{{toUpperCase}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "COMPUTED | WATCH  ",
+          name: "Bruno Bergamaschi",
+        },
+        // Executa sempre que alguma dependência sofrer alteração
+        computed: {
+          toUpperCase() {
+            return this.name.toUpperCase();
+          },
+        },
+        // Observa alterações em variáveis específicas
+        // No exemplo abaixo, quando NAME for alterado, a função name() abaixo
+        // receberá o valor novo e o valor antigo
+        // Ex.: name = 'Aline Martins'
+        // newValue = 'Aline Martins'
+        // oldValue = 'Bruno Bergamaschi'
+        watch: {
+          name(newValue, oldValue) {},
+        },
+      });
+    </script>
+  </body>
+</html>

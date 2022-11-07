@@ -16,12 +16,29 @@
   <body>
     <div id="app">
       <h1>{{title}}</h1>
-      <button class="btn" :class="btnClassClear" :style="btbStyleClear">
-        Limpar
-      </button>
-      <button class="btn" :class="btnClassSend" :style="btbStyleSend">
-        Enviar
-      </button>
+      <form action="https://google.com">
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm"
+          v-on:click="send()"
+        >
+          Enviar
+        </button>
+
+        <!-- prevent.stop executa apenas o v-on e cancela a action do form -->
+        <button
+          type="submit"
+          class="btn btn-danger btn-sm"
+          v-on:click.prevent.stop="send()"
+        >
+          Enviar com prevent.stop
+        </button>
+
+        <!-- abreviação de v-on é @ -->
+        <button type="submit" class="btn btn-primary btn-sm" @click="send()">
+          Enviar
+        </button>
+      </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -35,14 +52,12 @@
       var app = new Vue({
         el: "#app",
         data: {
-          title: "Aula 04 - V-BIND-CLASS-AND-STYLE",
-          btnClassClear: {
-            "btn-danger": true,
-            "btn-sm": false,
+          title: "V-ON",
+        },
+        methods: {
+          send() {
+            alert("Enviado!");
           },
-          btnClassSend: ["btn-primary", { "btn-sm": true }],
-          btbStyleClear: { "font-size": "50px" },
-          btbStyleSend: [{ "font-size": "100px" }],
         },
       });
     </script>

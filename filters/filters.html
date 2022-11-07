@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <ul>
+        <li v-for="item in users">
+          <!-- filtros toUpperCase() | truncate('10') aplicados -->
+          <!-- o primeiro parâmetro sempre é passado de forma anônima, 
+          qualquer parâmetro inserido manualmente será atribuído
+          a partir do segundo parâmetro criado na função -->
+          {{item.name | toUpperCase() | truncate('10')}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "FILTERS",
+          users: [
+            {
+              name: "Bruno Bergamaschi",
+            },
+            {
+              name: "Aline Martins",
+            },
+            {
+              name: "Thiago Ferraro",
+            },
+          ],
+        },
+        // filters são aplicados em tags para filtrar condições definidas
+        filters: {
+          toUpperCase(value) {
+            return value.toUpperCase();
+          },
+          truncate(value, length) {
+            let output = value;
+            if (output.length > length) {
+              output = `${value.substring(0, length)}...`;
+            }
+            return output;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

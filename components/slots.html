@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container-fluid min-vh-100">
+        <div class="p-5">
+            <card>                    
+              <h5 slot="title" class="card-title">Internacional</h5>
+              <template slot="text">
+                <p class="card-text">Sport Clube Internacional - Porto Alegre - RS.</p>
+                <p class="card-text">Estádio: Beira-rio</p>
+              </template>
+              <a slot="action" href="#" class="btn btn-primary">Go somewhere</a>
+              <div>Slot default</div>
+            </card>
+            <card>                    
+              <h5 slot="title" class="card-title">Grêmio</h5>
+               <template slot="text">
+                 <p slot="text" class="card-text">Grêmio Foot-Ball Porto Alegrense</p>
+                 <p class="card-text">Estádio: Arena do Grêmio</p>
+                </template>
+              <a slot="action" href="#" class="btn btn-primary">Go somewhere</a>
+              <div>Slot default</div>
+            </card>
+        </div>
+      </div>
+    </div>
+
+    <template id="card">
+        <div class="row justify-content-center align-items-center h-100 mt-4">
+            <div class="col-6">
+                <div class="card">
+                    <img src="http://via.placeholder.com/350x150" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <slot name="title"></slot>
+                      <slot name="text"></slot>
+                      <slot name="action"></slot>
+                      <slot></slot>
+                    </div>
+                </div>
+            </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      Vue.component("card", {
+        template: "#card",
+      });
+      var eventBus = new Vue();
+      Vue.prototype.$eventHub = new Vue();
+      var app = new Vue({
+        el: "#app",
+        data: {
+          title: "COMPONENTS PROPS",
+        },
+      });
+    </script>
+  </body>
+</html>
